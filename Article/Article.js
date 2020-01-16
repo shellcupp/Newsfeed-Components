@@ -159,6 +159,7 @@ const articles = data.map((article) => {
     return arti;
 });
 console.log(articles);
+
 articles.forEach((arti) => {
 articlesDiv.appendChild(arti);
 }); 
