@@ -111,4 +111,58 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
+  <div class="article">
+    <h2>{title of the article}</h2>
+    <p class="date">{date of the article}</p>
+
+    {three separate paragraph elements}
+
+    <span class='expandButton'></span>
+  </div> 
 */
+function newArticle(data){
+  let article = document.createElement('div');
+    article.classList.add('article');
+  let title = document.createElement('h2');
+  let date = document.createElement('p');
+  let firstP = document.createElement('p');
+  let secondP = document.createElement('p');
+  let thirdP = document.createElement('p');
+  let button = document.createElement('span');
+
+  title.textContent = data.title;
+  date.textContent = data.date;
+    date.classList.add('date');
+  firstP.textContent = data.firstParagraph;
+  secondP.textContent = data.secondParagraph;
+  thirdP.textContent = data.thirdParagraph;
+  button.textContent = 'Expand';
+    button.classList.add('expandButton');
+  button.addEventListener('click' , (e) => {
+    article.classList.toggle('article-open');
+  });
+
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstP);
+  article.appendChild(secondP);
+  article.appendChild(thirdP);
+  article.appendChild(button);
+  console.log(article);
+  return article;
+};
+
+let articlesDiv = document.querySelector('.articles');
+console.log(articlesDiv);
+const articles = data.map((article) => {
+    let arti = newArticle(article);
+    return arti;
+});
+console.log(articles);
+
+articles.forEach((arti) => {
+articlesDiv.appendChild(arti);
+}); 
+
+console.log(articles);
+
